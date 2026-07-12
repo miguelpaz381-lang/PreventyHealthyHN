@@ -28,12 +28,12 @@ const CATEGORIES = {
 };
 
 const PRODUCTS = [
-  { id: "mer-01", brand: "mercola", name: "Coral Calcium", category: "minerales", price: null },
-  { id: "mer-02", brand: "mercola", name: "Vitamin K2", category: "vitaminas", price: null },
-  { id: "mer-03", brand: "mercola", name: "Complete Spore Restore", category: "probioticos", price: null },
-  { id: "mer-04", brand: "mercola", name: "Niacin Vitamin B3", category: "vitaminas", price: null },
-  { id: "mer-05", brand: "mercola", name: "Antarctic Krill Oil", category: "omega", price: null },
-  { id: "mer-06", brand: "mercola", name: "Ubiquinol", category: "antioxidantes", price: null },
+  { id: "mer-01", brand: "mercola", name: "Coral Calcium", category: "minerales", price: null, image: "img/productos/coral-calcium.jpg" },
+  { id: "mer-02", brand: "mercola", name: "Vitamin K2", category: "vitaminas", price: null, image: "img/productos/vitamin-k2.jpg" },
+  { id: "mer-03", brand: "mercola", name: "Complete Spore Restore", category: "probioticos", price: null, image: "img/productos/complete-spore-restore.jpg" },
+  { id: "mer-04", brand: "mercola", name: "Niacin Vitamin B3", category: "vitaminas", price: null, image: "img/productos/niacin-vitamin-b3.jpg" },
+  { id: "mer-05", brand: "mercola", name: "Antarctic Krill Oil", category: "omega", price: null, image: "img/productos/antarctic-krill-oil.jpg" },
+  { id: "mer-06", brand: "mercola", name: "Ubiquinol", category: "antioxidantes", price: null, image: "img/productos/ubiquinol.jpg" },
   { id: "mer-07", brand: "mercola", name: "Liposomal Hyaluronic Acid", category: "belleza", price: null },
   { id: "mer-08", brand: "mercola", name: "Astaxanthin", category: "antioxidantes", price: null },
   { id: "mer-09", brand: "mercola", name: "Vitamin E", category: "vitaminas", price: null },
