@@ -452,12 +452,13 @@ section { padding-block: var(--space-9); }
 }
 .scroll-hero__bg {
   position: absolute;
-  inset: -12%;
+  inset: 0;
   background-image: url("../img/portada.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: var(--hero-bg-size, 170%);
-  will-change: background-size;
+  /* "contain" a propósito: es un gráfico diseñado de borde a borde (texto,
+     ilustraciones, logo incluido), no una foto con margen para recortar. */
+  background-size: contain;
 }
 .scroll-hero__scrim {
   position: absolute;
@@ -535,6 +536,10 @@ section { padding-block: var(--space-9); }
 
 /* Compactar el hero en pantallas angostas para que todo el texto quepa en 100vh sin recortarse */
 @media (max-width: 640px) {
+  /* En vertical, "contain" dejaría la imagen como una franja delgada con enormes
+     barras vacías arriba/abajo. "cover" recorta solo los bordes decorativos y
+     conserva a la persona + el texto central, que es lo importante. */
+  .scroll-hero__bg { background-size: cover; }
   .scroll-hero__content { padding-bottom: var(--space-5); }
   .scroll-hero__content .hero-eyebrow { padding: 5px var(--space-3); font-size: 10px; }
   .scroll-hero__content h1 { margin-top: var(--space-2); }
@@ -560,7 +565,7 @@ section { padding-block: var(--space-9); }
   .scroll-hero { height: auto; }
   .scroll-hero__pin { position: relative; height: 80vh; }
   .scroll-hero__clip { clip-path: none !important; }
-  .scroll-hero__bg { background-size: cover !important; }
+  .scroll-hero__bg { background-size: contain !important; }
 }
 
 /* ---------- Reveal animations ---------- */

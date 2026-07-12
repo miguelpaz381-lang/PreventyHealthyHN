@@ -306,7 +306,6 @@ function initScrollHero() {
   if (!hero) return;
 
   const clip = hero.querySelector(".scroll-hero__clip");
-  const bg = hero.querySelector(".scroll-hero__bg");
   const content = hero.querySelector(".scroll-hero__content");
   const contentChildren = content ? [...content.children] : [];
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -317,10 +316,8 @@ function initScrollHero() {
   // scroll-jacking se siente eterno antes de llegar al contenido real.
   const isNarrow = window.innerWidth < 640;
   const SCROLL_HEIGHT = isNarrow ? 900 : 1500;
-  const BG_SCROLL_RANGE = SCROLL_HEIGHT + 500;
   const CLIP_START_FROM = 25, CLIP_START_TO = 0;
   const CLIP_END_FROM = 75, CLIP_END_TO = 100;
-  const BG_FROM = 170, BG_TO = 100;
   hero.style.setProperty("--scroll-distance", `${SCROLL_HEIGHT}px`);
 
   // El texto aparece en cascada durante los primeros CONTENT_RANGE px de scroll
@@ -347,10 +344,6 @@ function initScrollHero() {
     const clipStart = lerp(CLIP_START_FROM, CLIP_START_TO, t);
     const clipEnd = lerp(CLIP_END_FROM, CLIP_END_TO, t);
     clip.style.clipPath = `polygon(${clipStart}% ${clipStart}%, ${clipEnd}% ${clipStart}%, ${clipEnd}% ${clipEnd}%, ${clipStart}% ${clipEnd}%)`;
-
-    const bgScrollY = clamp(window.scrollY - heroTop, 0, BG_SCROLL_RANGE);
-    const bgSize = lerp(BG_FROM, BG_TO, bgScrollY / BG_SCROLL_RANGE);
-    bg.style.setProperty("--hero-bg-size", `${bgSize}%`);
 
     const contentScrollY = clamp(window.scrollY - heroTop, 0, CONTENT_RANGE);
     const contentT = contentScrollY / CONTENT_RANGE;
