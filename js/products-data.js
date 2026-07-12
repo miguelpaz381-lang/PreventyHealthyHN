@@ -61,10 +61,10 @@ const PRODUCTS = [
   { id: "mer-31", brand: "mercola", name: "Liposomal Vitamin C Liquid", category: "vitaminas", price: null, image: "img/productos/liposomal-vitamin-c-liquid.jpg" },
   { id: "mer-32", brand: "mercola", name: "Collagen Vainilla", category: "colageno", price: null, image: "img/productos/collagen-vainilla.jpg" },
 
-  { id: "blo-01", brand: "bloom", name: "Greens Strawberry Kiwi (60 servicios)", category: "energia", price: null },
-  { id: "blo-02", brand: "bloom", name: "Greens Mango", category: "energia", price: null },
-  { id: "blo-03", brand: "bloom", name: "Greens Strawberry Kiwi (30 servicios)", category: "energia", price: null },
-  { id: "blo-04", brand: "bloom", name: "Matcha (30g)", category: "energia", price: null },
+  { id: "blo-01", brand: "bloom", name: "Greens Strawberry Kiwi (60 servicios)", category: "energia", price: null, image: "img/productos/bloom-greens-strawberry-kiwi-60.jpg" },
+  { id: "blo-02", brand: "bloom", name: "Greens Mango", category: "energia", price: null, image: "img/productos/bloom-greens-mango.jpg" },
+  { id: "blo-03", brand: "bloom", name: "Greens Strawberry Kiwi (30 servicios)", category: "energia", price: null, image: "img/productos/bloom-greens-strawberry-kiwi-30.jpg" },
+  { id: "blo-04", brand: "bloom", name: "Matcha (30g)", category: "energia", price: null, image: "img/productos/bloom-matcha.jpg" },
 
   { id: "hum-01", brand: "hum", name: "B12 Turbo", category: "energia", price: null, image: "img/productos/hum-b12-turbo.jpg" },
   { id: "hum-02", brand: "hum", name: "Celery Juice + Chlorophyll", category: "energia", price: null, image: "img/productos/hum-celery-juice.jpg" },
