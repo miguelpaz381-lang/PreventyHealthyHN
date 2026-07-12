@@ -11,6 +11,7 @@ const BRANDS = {
   mercola: { name: "Mercola", tagline: "Ciencia y pureza para tu bienestar" },
   bloom: { name: "Bloom Nutrition", tagline: "Greens y energía natural" },
   hum: { name: "HUM Nutrition", tagline: "Belleza desde adentro" },
+  "4life": { name: "4Life", tagline: "Ciencia inmunológica de vanguardia" },
 };
 
 const CATEGORIES = {
@@ -58,6 +59,7 @@ const PRODUCTS = [
   { id: "mer-29", brand: "mercola", name: "Collagen Complex", category: "colageno", price: null, image: "img/productos/collagen-complex.jpg" },
   { id: "mer-30", brand: "mercola", name: "Whey Protein", category: "deportivo", price: null, image: "img/productos/whey-protein.jpg" },
   { id: "mer-31", brand: "mercola", name: "Liposomal Vitamin C Liquid", category: "vitaminas", price: null },
+  { id: "mer-32", brand: "mercola", name: "Collagen Vainilla", category: "colageno", price: null, image: "img/productos/collagen-vainilla.jpg" },
 
   { id: "blo-01", brand: "bloom", name: "Greens Strawberry Kiwi (60 servicios)", category: "energia", price: null },
   { id: "blo-02", brand: "bloom", name: "Greens Mango", category: "energia", price: null },
@@ -68,6 +70,12 @@ const PRODUCTS = [
   { id: "hum-02", brand: "hum", name: "Celery Juice + Chlorophyll", category: "energia", price: null, image: "img/productos/hum-celery-juice.jpg" },
   { id: "hum-03", brand: "hum", name: "Hair Strong (Biotina + Ácido Fólico)", category: "belleza", price: null, image: "img/productos/hum-hair-strong.jpg" },
   { id: "hum-04", brand: "hum", name: "SOS PMS + Vitamin B6", category: "mujer", price: null, image: "img/productos/hum-sos-pms.jpg" },
+  { id: "hum-05", brand: "hum", name: "Ashwagandha", category: "energia", price: null, image: "img/productos/hum-ashwagandha.jpg" },
+  { id: "hum-06", brand: "hum", name: "Balance Hormonal", category: "mujer", price: null, image: "img/productos/hum-balance-hormonal.jpg" },
+  { id: "hum-07", brand: "hum", name: "Here Comes The Sun", category: "belleza", price: null, image: "img/productos/hum-here-comes-the-sun.jpg" },
+  { id: "hum-08", brand: "hum", name: "Private Party", category: "mujer", price: null, image: "img/productos/hum-private-party.jpg" },
+
+  { id: "life-01", brand: "4life", name: "Transfer Factor Cardio", category: "antioxidantes", price: null, image: "img/productos/4life-transfer-factor-cardio.jpg" },
 ];
 
 // Ícono por categoría, usado en las tarjetas cuando no hay foto real del producto.

@@ -842,6 +842,7 @@ section { padding-block: var(--space-9); }
 .product-card__media.bg-mercola { background: linear-gradient(160deg, var(--color-primary-light), var(--color-primary)); }
 .product-card__media.bg-bloom { background: linear-gradient(160deg, #FF9466, var(--color-accent)); }
 .product-card__media.bg-hum { background: linear-gradient(160deg, #57C97A, var(--color-success)); }
+.product-card__media.bg-4life { background: linear-gradient(160deg, var(--color-primary-light), var(--color-primary-dark)); }
 
 .product-card__badge {
   position: absolute; top: var(--space-3); left: var(--space-3);
