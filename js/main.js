@@ -242,12 +242,15 @@ function initCatalog() {
   function cardTemplate(p) {
     const brand = BRANDS[p.brand];
     const iconName = CATEGORY_ICONS[p.category] || "capsule";
+    const media = p.image
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
+      : icon(iconName);
     return `
       <article class="product-card reveal">
         <div class="product-card__media bg-${p.brand}">
           <span class="product-card__badge">${brand.name}</span>
           <span class="product-card__stock">${icon("check")} Disponible</span>
-          ${icon(iconName)}
+          ${media}
         </div>
         <div class="product-card__body">
           <span class="product-card__brand">${CATEGORIES[p.category]}</span>

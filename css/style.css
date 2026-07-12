@@ -453,7 +453,7 @@ section { padding-block: var(--space-9); }
 .scroll-hero__bg {
   position: absolute;
   inset: -12%;
-  background-image: url("../img/hero-bottles.png");
+  background-image: url("../img/portada.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: var(--hero-bg-size, 170%);
@@ -829,6 +829,15 @@ section { padding-block: var(--space-9); }
   transition: transform var(--dur-slow) var(--ease-spring);
 }
 .product-card:hover .product-card__media svg { transform: scale(1.08) rotate(-3deg); }
+.product-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-spring);
+}
+.product-card:hover .product-card__media img { transform: scale(1.05); }
 
 .product-card__media.bg-mercola { background: linear-gradient(160deg, var(--color-primary-light), var(--color-primary)); }
 .product-card__media.bg-bloom { background: linear-gradient(160deg, #FF9466, var(--color-accent)); }

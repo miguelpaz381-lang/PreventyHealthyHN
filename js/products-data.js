@@ -55,8 +55,8 @@ const PRODUCTS = [
   { id: "mer-26", brand: "mercola", name: "Liposomal Vitamin C (60)", category: "vitaminas", price: null },
   { id: "mer-27", brand: "mercola", name: "Biothin MCT Oil", category: "energia", price: null },
   { id: "mer-28", brand: "mercola", name: "Bone Broth Collagen from Beef", category: "colageno", price: null },
-  { id: "mer-29", brand: "mercola", name: "Collagen Complex", category: "colageno", price: null },
-  { id: "mer-30", brand: "mercola", name: "Whey Protein", category: "deportivo", price: null },
+  { id: "mer-29", brand: "mercola", name: "Collagen Complex", category: "colageno", price: null, image: "img/productos/collagen-complex.jpg" },
+  { id: "mer-30", brand: "mercola", name: "Whey Protein", category: "deportivo", price: null, image: "img/productos/whey-protein.jpg" },
   { id: "mer-31", brand: "mercola", name: "Liposomal Vitamin C Liquid", category: "vitaminas", price: null },
 
   { id: "blo-01", brand: "bloom", name: "Greens Strawberry Kiwi (60 servicios)", category: "energia", price: null },
@@ -64,10 +64,10 @@ const PRODUCTS = [
   { id: "blo-03", brand: "bloom", name: "Greens Strawberry Kiwi (30 servicios)", category: "energia", price: null },
   { id: "blo-04", brand: "bloom", name: "Matcha (30g)", category: "energia", price: null },
 
-  { id: "hum-01", brand: "hum", name: "B12 Turbo", category: "energia", price: null },
-  { id: "hum-02", brand: "hum", name: "Celery Juice + Chlorophyll", category: "energia", price: null },
-  { id: "hum-03", brand: "hum", name: "Hair Strong (Biotina + Ácido Fólico)", category: "belleza", price: null },
-  { id: "hum-04", brand: "hum", name: "SOS PMS + Vitamin B6", category: "mujer", price: null },
+  { id: "hum-01", brand: "hum", name: "B12 Turbo", category: "energia", price: null, image: "img/productos/hum-b12-turbo.jpg" },
+  { id: "hum-02", brand: "hum", name: "Celery Juice + Chlorophyll", category: "energia", price: null, image: "img/productos/hum-celery-juice.jpg" },
+  { id: "hum-03", brand: "hum", name: "Hair Strong (Biotina + Ácido Fólico)", category: "belleza", price: null, image: "img/productos/hum-hair-strong.jpg" },
+  { id: "hum-04", brand: "hum", name: "SOS PMS + Vitamin B6", category: "mujer", price: null, image: "img/productos/hum-sos-pms.jpg" },
 ];
 
 // Ícono por categoría, usado en las tarjetas cuando no hay foto real del producto.
