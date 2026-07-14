@@ -31,7 +31,7 @@ const CATEGORIES = {
 };
 
 const PRODUCTS = [
-  { id: "mer-01", brand: "mercola", name: "Coral Calcium", category: "minerales", price: null, available: false, image: "img/productos/coral-calcium.jpg" },
+  { id: "mer-01", brand: "mercola", name: "Coral Calcium", category: "minerales", price: null, available: true, image: "img/productos/coral-calcium.jpg" },
   { id: "mer-02", brand: "mercola", name: "Vitamin K2", category: "vitaminas", price: null, available: true, image: "img/productos/vitamin-k2.jpg" },
   { id: "mer-03", brand: "mercola", name: "Complete Spore Restore", category: "probioticos", price: null, available: true, image: "img/productos/complete-spore-restore.jpg" },
   { id: "mer-04", brand: "mercola", name: "Niacin Vitamin B3", category: "vitaminas", price: null, available: true, image: "img/productos/niacin-vitamin-b3.jpg" },
