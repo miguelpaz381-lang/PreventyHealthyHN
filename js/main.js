@@ -19,6 +19,10 @@ function waProductLink(productName, brandName) {
   return waLink(`Hola Preventy Healthy 👋, quisiera más información sobre "${productName}" (${brandName}).`);
 }
 
+function waRestockLink(productName, brandName) {
+  return waLink(`Hola Preventy Healthy 👋, quisiera que me avisen cuando "${productName}" (${brandName}) esté disponible de nuevo.`);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initIcons();
   initNavbar();
@@ -245,20 +249,29 @@ function initCatalog() {
     const media = p.image
       ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
       : icon(iconName);
+    const isOut = p.available === false;
+    const stockBadge = isOut
+      ? `<span class="product-card__stock is-out">${icon("clock")} Agotado</span>`
+      : `<span class="product-card__stock">${icon("check")} Disponible</span>`;
+    const cta = isOut
+      ? `<a class="btn btn-outline product-card__cta" href="${waRestockLink(p.name, brand.name)}" target="_blank" rel="noopener">
+          ${icon("whatsapp")} Avisarme cuando esté disponible
+        </a>`
+      : `<a class="btn btn-whatsapp product-card__cta" href="${waProductLink(p.name, brand.name)}" target="_blank" rel="noopener">
+          ${icon("whatsapp")} Pedir por WhatsApp
+        </a>`;
     return `
-      <article class="product-card reveal">
+      <article class="product-card reveal${isOut ? " is-out" : ""}">
         <div class="product-card__media bg-${p.brand}">
           <span class="product-card__badge">${brand.name}</span>
-          <span class="product-card__stock">${icon("check")} Disponible</span>
+          ${stockBadge}
           ${media}
         </div>
         <div class="product-card__body">
           <span class="product-card__brand">${CATEGORIES[p.category]}</span>
           <h3 class="product-card__name">${p.name}</h3>
           ${priceMarkup(p)}
-          <a class="btn btn-whatsapp product-card__cta" href="${waProductLink(p.name, brand.name)}" target="_blank" rel="noopener">
-            ${icon("whatsapp")} Pedir por WhatsApp
-          </a>
+          ${cta}
         </div>
       </article>`;
   }
@@ -266,7 +279,7 @@ function initCatalog() {
   function render() {
     const query = state.query.trim().toLowerCase();
     state.query = query;
-    const filtered = PRODUCTS.filter(matches);
+    const filtered = PRODUCTS.filter(matches).sort((a, b) => (a.available === false) - (b.available === false));
     grid.innerHTML = filtered.length
       ? filtered.map(cardTemplate).join("")
       : `<div class="empty-state">${icon("search")}<p>No encontramos productos con esos filtros.<br>Prueba con otra categoría o escríbenos por WhatsApp.</p></div>`;

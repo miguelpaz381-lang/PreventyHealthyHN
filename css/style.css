@@ -864,6 +864,13 @@ section { padding-block: var(--space-9); }
   box-shadow: var(--shadow-sm);
 }
 .product-card__stock svg { width: 12px; height: 12px; }
+.product-card__stock.is-out { color: var(--color-text-muted); }
+
+/* Tarjetas agotadas: se muestran (no se ocultan) pero atenuadas, para que el
+   producto se siga encontrando por búsqueda/categoría sin competir visualmente
+   con lo disponible. */
+.product-card.is-out .product-card__media { opacity: 0.55; }
+.product-card.is-out .product-card__name { color: var(--color-text-secondary); }
 
 .product-card__body {
   padding: var(--space-4) var(--space-4) var(--space-5);
