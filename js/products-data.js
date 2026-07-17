@@ -80,7 +80,7 @@ const PRODUCTS = [
   { id: "hum-06", brand: "hum", name: "Balance Hormonal", category: "mujer", price: 1200, available: true, image: "img/productos/hum-balance-hormonal.jpg" },
   { id: "hum-07", brand: "hum", name: "Vitamina D3", category: "vitaminas", price: 850, available: true, image: "img/productos/hum-vitamina-d3.jpg" },
   { id: "hum-08", brand: "hum", name: "Private Party", category: "mujer", price: null, available: false, image: "img/productos/hum-private-party.jpg" },
-  { id: "hum-09", brand: "hum", name: "GLP-1 Booster", category: "energia", price: 1300, available: true, image: null },
+  { id: "hum-09", brand: "hum", name: "GLP-1 Booster", category: "energia", price: 1300, available: true, image: "img/productos/hum-glp1-booster.jpg" },
 
   { id: "life-01", brand: "4life", name: "Transfer Factor Cardio", category: "antioxidantes", price: 1500, available: true, image: "img/productos/4life-transfer-factor-cardio.jpg" },
 ];
