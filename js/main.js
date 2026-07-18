@@ -34,8 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initTilt();
   initCounters();
   initScrollHero();
+  initHeroGlow();
   if (document.getElementById("product-grid")) initCatalog();
 });
+
+/* ---------- Brillo del hero que sigue el cursor (solo desktop) ---------- */
+function initHeroGlow() {
+  const pin = document.querySelector(".scroll-hero__pin");
+  if (!pin) return;
+  if (window.matchMedia("(hover: none)").matches) return;
+
+  pin.addEventListener("pointermove", (e) => {
+    const rect = pin.getBoundingClientRect();
+    pin.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    pin.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  });
+}
 
 /* ---------- Spotlight que sigue el cursor (tarjetas .glow-card) ---------- */
 function initGlowCards() {
@@ -321,6 +335,7 @@ function initScrollHero() {
   const clip = hero.querySelector(".scroll-hero__clip");
   const content = hero.querySelector(".scroll-hero__content");
   const contentChildren = content ? [...content.children] : [];
+  const scrollCue = hero.querySelector(".scroll-hero__scrollcue");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (reduced) return; // el CSS ya define el estado estático de respaldo
@@ -357,6 +372,10 @@ function initScrollHero() {
     const clipStart = lerp(CLIP_START_FROM, CLIP_START_TO, t);
     const clipEnd = lerp(CLIP_END_FROM, CLIP_END_TO, t);
     clip.style.clipPath = `polygon(${clipStart}% ${clipStart}%, ${clipEnd}% ${clipStart}%, ${clipEnd}% ${clipEnd}%, ${clipStart}% ${clipEnd}%)`;
+
+    // La pista de "desliza para explorar" solo tiene sentido antes de que el
+    // usuario empiece a moverse: se apaga en el primer 25% del recorrido.
+    if (scrollCue) scrollCue.style.opacity = String(1 - clamp(t / 0.25, 0, 1));
 
     const contentScrollY = clamp(window.scrollY - heroTop, 0, CONTENT_RANGE);
     const contentT = contentScrollY / CONTENT_RANGE;

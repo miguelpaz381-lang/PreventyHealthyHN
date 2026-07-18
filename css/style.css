@@ -459,12 +459,55 @@ section { padding-block: var(--space-9); }
   /* "contain" a propósito: es un gráfico diseñado de borde a borde (texto,
      ilustraciones, logo incluido), no una foto con margen para recortar. */
   background-size: contain;
+  /* Zoom lento y continuo (ken burns), independiente del scroll-jack, para
+     que el hero se sienta vivo incluso antes de que el usuario haga scroll. */
+  animation: heroKenBurns 20s ease-in-out infinite alternate;
+}
+@keyframes heroKenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
 }
 .scroll-hero__scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(20, 14, 26, 0.02) 0%, rgba(20, 14, 26, 0.1) 60%, rgba(20, 14, 26, 0.32) 100%);
 }
+
+/* Orbes ambientales: se asoman por fuera del recorte de la foto (que arranca
+   como un marco centrado, no a pantalla completa) y le dan profundidad de
+   color a la marca antes de que el scroll expanda la imagen. */
+.scroll-hero__orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scroll-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.4;
+  animation: heroOrbDrift 18s ease-in-out infinite alternate;
+}
+.scroll-hero__orb--1 { width: 380px; height: 380px; top: -100px; left: -80px; background: var(--color-primary-light); }
+.scroll-hero__orb--2 { width: 320px; height: 320px; bottom: -110px; right: 4%; background: var(--color-accent); animation-duration: 23s; animation-delay: -6s; }
+.scroll-hero__orb--3 { width: 240px; height: 240px; top: 32%; right: 18%; background: var(--color-success); animation-duration: 20s; animation-delay: -11s; }
+@keyframes heroOrbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(36px, -28px) scale(1.15); }
+}
+
+/* Brillo que sigue el cursor (solo desktop con hover), mismo lenguaje visual
+   que el spotlight de .glow-card usado en el resto del sitio. */
+.scroll-hero__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  background: radial-gradient(480px circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.16), transparent 70%);
+}
+.scroll-hero__pin:hover .scroll-hero__glow { opacity: 1; }
 .scroll-hero__content {
   position: relative;
   z-index: 1;
@@ -473,9 +516,10 @@ section { padding-block: var(--space-9); }
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: var(--space-9);
-  /* Un empuje suave de contraste, no un velo opaco: la foto debe seguir viéndose.
-     La legibilidad real la dan los text-shadow de cada elemento, no este fondo. */
-  background: linear-gradient(180deg, transparent 0%, transparent 40%, rgba(10, 7, 14, 0.32) 70%, rgba(10, 7, 14, 0.62) 100%);
+  /* El velo cubre casi todo el bloque de texto (no solo el borde inferior):
+     el fondo es un collage claro y el texto necesita esa base oscura además
+     de los text-shadow para mantenerse legible en cualquier punto del scroll. */
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 7, 14, 0.1) 20%, rgba(10, 7, 14, 0.58) 55%, rgba(10, 7, 14, 0.86) 100%);
 }
 /* Estado inicial: oculto hasta que el JS calcule la aparición en cascada según el scroll */
 .scroll-hero__content > * {
@@ -512,8 +556,9 @@ section { padding-block: var(--space-9); }
 .scroll-hero__content .hero-lead {
   font-size: var(--fs-md);
   max-width: 52ch;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .scroll-hero__content .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-5); }
@@ -533,6 +578,35 @@ section { padding-block: var(--space-9); }
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 .scroll-hero__content .hero-stat span { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+
+/* Pista de scroll: invita a interactuar con el hero, y se desvanece apenas
+   el usuario empieza a hacer scroll (opacidad controlada desde el JS). */
+.scroll-hero__scrollcue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-6);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+.scroll-hero__scrollcue-icon {
+  width: 18px; height: 18px;
+  transform: rotate(90deg);
+  animation: heroScrollBounce 1.6s ease-in-out infinite;
+}
+@keyframes heroScrollBounce {
+  0%, 100% { transform: rotate(90deg) translateY(0); }
+  50% { transform: rotate(90deg) translateY(6px); }
+}
 
 /* Compactar el hero en pantallas angostas para que todo el texto quepa en 100vh sin recortarse */
 @media (max-width: 640px) {
@@ -561,11 +635,21 @@ section { padding-block: var(--space-9); }
   .scroll-hero__content .hero-stat span { font-size: 10px; }
 }
 
+@media (max-width: 640px) {
+  .scroll-hero__scrollcue { display: none; }
+}
+
+@media (hover: none) {
+  .scroll-hero__glow { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-hero { height: auto; }
   .scroll-hero__pin { position: relative; height: 80vh; }
   .scroll-hero__clip { clip-path: none !important; }
-  .scroll-hero__bg { background-size: contain !important; }
+  .scroll-hero__bg { background-size: contain !important; animation: none; }
+  .scroll-hero__orb { animation: none; }
+  .scroll-hero__scrollcue-icon { animation: none; }
 }
 
 /* ---------- Reveal animations ---------- */
